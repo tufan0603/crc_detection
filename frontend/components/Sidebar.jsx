@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { LayoutDashboard, ScanLine, Clock, Info, Activity } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
+import { LayoutDashboard, ScanLine, Clock, Info, Activity, LogOut } from "lucide-react";
 import clsx from "clsx";
 
 const nav = [
@@ -12,7 +12,14 @@ const nav = [
 ];
 
 export default function Sidebar() {
-  const path = usePathname();
+  const path   = usePathname();
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    await fetch('/api/auth/logout', { method: 'POST' })
+    router.push('/login')
+    router.refresh()
+  }
 
   return (
     <aside className="w-52 flex-shrink-0 flex flex-col border-r border-border" style={{ background: '#d8e3f3' }}>
@@ -55,14 +62,20 @@ export default function Sidebar() {
       </nav>
 
       {/* Footer */}
-      <div className="px-4 py-3 border-t border-border/70">
-        <div className="flex items-center gap-2">
+      <div className="px-3 py-3 border-t border-border/70 space-y-2">
+        <div className="px-1 flex items-center gap-2">
           <span className="w-1.5 h-1.5 rounded-full bg-success" />
           <span className="text-xs text-textsub font-medium">Models Online</span>
         </div>
-        <p className="text-[10px] text-muted mt-1.5 leading-relaxed">
+        <p className="text-[10px] text-muted px-1 leading-relaxed">
           DenseNet · ResNet · EfficientNet
         </p>
+        <button
+          onClick={handleLogout}
+          className="w-full flex items-center gap-2 px-3 py-2 rounded-md text-xs font-medium text-textsub hover:text-danger hover:bg-red-50 transition-all duration-150">
+          <LogOut size={13} />
+          Sign Out
+        </button>
       </div>
     </aside>
   );

@@ -1,5 +1,5 @@
 import './globals.css'
-import Sidebar from '@/components/Sidebar'
+import ConditionalSidebar from '@/components/ConditionalSidebar'
 
 export const metadata = {
   title: {
@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="flex h-screen overflow-hidden bg-bg">
-        <Sidebar />
+        <ConditionalSidebar />
         <div className="flex-1 flex flex-col overflow-hidden">
           {children}
         </div>
