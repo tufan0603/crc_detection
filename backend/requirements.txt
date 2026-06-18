@@ -1,0 +1,9 @@
+flask
+flask-cors
+gunicorn
+pydicom
+numpy
+torch
+monai
+scipy
+opencv-python

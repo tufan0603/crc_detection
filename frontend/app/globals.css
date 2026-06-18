@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #e4ecf7;
+  color: #0f1f3d;
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+svg text,
+.recharts-text {
+  fill: #7a8fb5 !important;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #d8e4f2;
+}
+::-webkit-scrollbar-thumb {
+  background: #b0c2db;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8aa0c0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in    { animation: fadeIn 0.28s ease forwards; }
+.animate-slide-up   { animation: slideUp 0.28s ease forwards; }
+.animate-pulse-ring { animation: pulse-ring 1.8s ease-out infinite; }
+.animate-spin-slow  { animation: spin 0.8s linear infinite; }
+
+.shimmer {
+  background: linear-gradient(90deg, #2563eb, #0ea5e9, #7c3aed);
+  background-size: 200% 100%;
+  animation: shimmer 2.4s linear infinite;
+}
+
+.gradient-blue   { background: linear-gradient(135deg, #2563eb, #0ea5e9); }
+.gradient-green  { background: linear-gradient(135deg, #16a34a, #0d9488); }
+.gradient-red    { background: linear-gradient(135deg, #dc2626, #ea580c); }
+.gradient-purple { background: linear-gradient(135deg, #7c3aed, #ec4899); }
