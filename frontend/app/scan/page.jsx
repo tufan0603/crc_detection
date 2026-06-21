@@ -34,7 +34,8 @@ export default function ScanPage() {
     formData.append('models', selectedModels.join(','))
 
     try {
-      const res  = await axios.post('/api/predict', formData, {
+      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'
+      const res  = await axios.post(`${backendUrl}/predict`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       })
       const data = res.data
